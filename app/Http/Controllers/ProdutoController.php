@@ -29,6 +29,23 @@ class produtoController extends Controller
         var_dump($produto);
     }
 
+     public function salvar_novo(Request $request)
+    {
+        //@csfr
+        $produto = new Produto;
+        $produto-> nome = $request->input('nome');
+        $produto-> id_categoria = $request->input('id_categoria');
+        $produto-> preco = $request->input('preco');
+        $produto-> quantidade = $request->input('quantidade');
+        $produto-> id_marca = $request->input('id_marca');
+        $produto-> descricao = $request->input('descricao');
+        $produto->save();
+
+        return redirect("/produto");
+
+        exit;
+    }
+
     public function inserir()
     {
         $categoria = Categoria::all()->toArray();
